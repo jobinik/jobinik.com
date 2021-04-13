@@ -15,16 +15,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: Setup MSBuild path
-      uses: microsoft/setup-msbuild@v1.0.2
-
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.5
-
-    - name: Publish to folder
-      run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
-
+	
+	- task: CopyFiles@2
+            displayName: 'Copy necessary files'
+            inputs:
+              SourceFolder: '$(System.DefaultWorkingDirectory)'
+              Contents: |
+                **/*
+                !.vscode/**/*
+              TargetFolder: '/published/'
+	
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
       with:

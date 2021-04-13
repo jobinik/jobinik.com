@@ -53,5 +53,5 @@ jobs:
       with:
         app-name: 'jobinik'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_d07199f67b7f4b2d8c2b0aa351b71678 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_4cecc1ab42504e50bcd58467555a94cd }}
         package: .
